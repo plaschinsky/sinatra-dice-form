@@ -1,10 +1,23 @@
+<!DOCTYPE html>
 <html>
-<h1>Dice Roll</h1>
-<form action="https://reimagined-fishstick-wrxq6575x77pc95jg-4567.app.github.dev">
-  <label for="num_dice">Number of dice to roll?</label>
-  <input id="num_dice" name="num_dice">
-  <label for="sides">How many sides per die?</label>
-  <input id="sides" name="sides">
-  <button>Submit</button>
-</form>
+  <% if @results %>
+    <h1><%= @dice %>d<%= @sides %></h1>
+    <a href="/process_roll?dice=<%= @dice %>&sides=<%= @sides %>">Roll again</a> |
+    <a href="/">Go back home</a>
+
+    <ol>
+      <% @results.each_with_index do |val, i| %>
+        <li><em>Result:</em> <%= val %></li>
+      <% end %>
+    </ol>
+  <% else %>
+    <h1>Dice Roller</h1>
+    <form action="/process_roll" method="get">
+      <label>Number of dice to roll?</label>
+      <input type="number" name="dice">
+      <label>How many sides per die?</label>
+      <input type="number" name="sides">
+      <button>Roll</button>
+    </form>
+  <% end %>
 </html>

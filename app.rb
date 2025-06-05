@@ -6,17 +6,9 @@ get("/") do
 end
 
 get("/process_roll") do
-  @num_dice = 2
+  @dice = params[:dice].to_i
+  @sides = params[:sides].to_i
+  @results = Array.new(@dice) { rand(1..@sides) }
 
-  @sides = 4
-
-  @rolls = []
-
-  @num_dice.times do
-    die = rand(1..@sides)
-
-    @rolls.push(die)
-  end
-
-  erb(:flexible)
+  erb :index
 end
