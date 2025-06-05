@@ -11,13 +11,13 @@
       <% end %>
     </ol>
   <% else %>
-    <h1>Dice Roller</h1>
+    <h1>Dice Roll</h1>
     <form action="/process_roll" method="get">
-      <label>Number of dice to roll?</label>
-      <input type="number" name="dice">
-      <label>How many sides per die?</label>
-      <input type="number" name="sides">
-      <button>Roll</button>
+      <label for="dice">Number of dice to roll?</label>
+      <input id="dice" type="number" name="dice">
+      <label for="sides">How many sides per die?</label>
+      <input id="sides" type="number" name="sides">
+      <button>Roll!</button>
     </form>
   <% end %>
 </html>
